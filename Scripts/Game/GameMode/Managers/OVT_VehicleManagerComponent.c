@@ -614,53 +614,49 @@ class OVT_VehicleManagerComponent: OVT_RplOwnerManagerComponent
 	{
 		if (!m_mPlayerVehicleIds.Contains(playerPersistentId))
 			return;
-		
+
 		array<string> vehicleIds = m_mPlayerVehicleIds[playerPersistentId];
-		int respawnedCount = 0;
-		
+
 		foreach (string vehicleId : vehicleIds)
 		{
-			// Check if already spawned
 			IEntity existingVehicle = FindVehicleEntity(vehicleId);
 			if (existingVehicle)
 				continue;
-			
-			// Load vehicle from EPF using the proper method
-			EPF_PersistenceManager persistenceManager = EPF_PersistenceManager.GetInstance();
-			if (persistenceManager)
-			{
-				Print(string.Format("[Overthrow] Loading vehicle from EPF: %1", vehicleId));
-				
-				// Load the vehicle entity from EPF save data
-				IEntity vehicleEntity = EPF_PersistentWorldEntityLoader.Load(EPF_VehicleSaveData, vehicleId);
-				if (vehicleEntity)
-				{
-					// Resume EPF tracking for the respawned vehicle
-					EPF_PersistenceComponent persistence = EPF_PersistenceComponent.Cast(
-						vehicleEntity.FindComponent(EPF_PersistenceComponent)
-					);
-					
-					if (persistence)
-					{
-						persistence.ResumeTracking();
-					}
-					
-					// Track spawned vehicle
-					m_mSpawnedVehicles[vehicleId] = vehicleEntity.GetID();
-					m_aVehicles.Insert(vehicleEntity.GetID());
-					respawnedCount++;
-					
-					Print(string.Format("[Overthrow] Successfully respawned vehicle: %1 for player: %2", vehicleId, playerPersistentId));
-				}
-				else
-				{
-					Print(string.Format("[Overthrow] Failed to load vehicle from EPF: %1", vehicleId));
-				}
-			}
+
+			Print(string.Format("[Overthrow] Loading vehicle from EPF: %1", vehicleId));
+			ref Tuple2<string, string> context = new Tuple2<string, string>(playerPersistentId, vehicleId);
+			EDF_DataCallbackSingle<IEntity> callback(this, "OnVehicleLoaded", context);
+			EPF_PersistentWorldEntityLoader.LoadAsync(EPF_VehicleSaveData, vehicleId, callback);
 		}
-		
-		if (respawnedCount > 0)
-			Print(string.Format("[Overthrow] Respawned %1 vehicles for player: %2", respawnedCount, playerPersistentId));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	//! Callback when a despawned vehicle is loaded from EPF on player connect
+	void OnVehicleLoaded(IEntity vehicleEntity, Managed context)
+	{
+		if (!vehicleEntity)
+		{
+			Print("[Overthrow] Failed to load vehicle entity from EPF");
+			return;
+		}
+
+		Tuple2<string, string> vehicleContext = Tuple2<string, string>.Cast(context);
+		if (!vehicleContext)
+			return;
+
+		string playerPersistentId = vehicleContext.param1;
+		string vehicleId = vehicleContext.param2;
+
+		EPF_PersistenceComponent persistence = EPF_PersistenceComponent.Cast(
+			vehicleEntity.FindComponent(EPF_PersistenceComponent)
+		);
+		if (persistence)
+			persistence.ResumeTracking();
+
+		m_mSpawnedVehicles[vehicleId] = vehicleEntity.GetID();
+		m_aVehicles.Insert(vehicleEntity.GetID());
+
+		Print(string.Format("[Overthrow] Successfully respawned vehicle: %1 for player: %2", vehicleId, playerPersistentId));
 	}
 
 	//------------------------------------------------------------------------------------------------
