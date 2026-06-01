@@ -595,6 +595,8 @@ class OVT_OverthrowGameMode : SCR_BaseGameMode
 	    // Notify listeners that player has connected
 	    m_PlayerManager.m_OnPlayerConnected.Invoke(persistentId, playerId);
 	    OVT_PlayerData player = m_PlayerManager.GetPlayer(persistentId);
+	    if (!player)
+	        return;
 	
 	    // Ensure the player is an officer in single-player mode or if they're the host in hosted multiplayer
 	    if (!player.isOfficer && (RplSession.Mode() == RplMode.None || (RplSession.Mode() == RplMode.Listen && playerId == 1)))
