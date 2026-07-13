@@ -53,6 +53,7 @@ class ARU_MineManagerComponent: OVT_Component
 			return;
 
 		m_aMines.Insert(mine);
+		Print(string.Format("[ARU] Mine registered at %1, daily income %2. Total mines: %3", mine.GetPosition(), mine.m_iDailyIncome, m_aMines.Count()));
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -98,6 +99,8 @@ class ARU_MineManagerComponent: OVT_Component
 
 			total += (int)Math.Round(mine.m_iDailyIncome / 4.0);
 		}
+
+		Print(string.Format("[ARU] PayMineIncome tick: %1 mines registered, paying %2 to resistance treasury", m_aMines.Count(), total));
 
 		if (total > 0)
 			economy.AddResistanceMoney(total);

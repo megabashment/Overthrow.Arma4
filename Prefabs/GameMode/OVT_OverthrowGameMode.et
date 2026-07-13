@@ -1,6 +1,8 @@
 OVT_OverthrowGameMode {
  ID "59B6F5261FBE5DC1"
  components {
+  ARU_MineManagerComponent "{69DAD67757B1714B}" {
+  }
   EPF_PersistenceComponent "{5D7009A1AB220903}" {
    m_bSelfSpawn 0
    m_bSelfDelete 0

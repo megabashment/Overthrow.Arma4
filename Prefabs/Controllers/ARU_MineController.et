@@ -1,0 +1,101 @@
+GenericEntity : "{160E4E4110803F26}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_FIA.et" {
+ ID "50C6D20663830070"
+ components {
+  ARU_MineComponent "{69DAD674A76D7EC1}" {
+   m_iDailyIncome 1500
+  }
+  OVT_BaseControllerComponent "{69DAD674895ADAE3}" {
+   m_aBaseUpgrades {
+    OVT_BaseUpgradeDefensePatrol "{69DAD674895ADACF}" {
+     m_iResourceAllocation 6
+    }
+    OVT_BaseUpgradeDefensePosition "{69DAD674895ADACC}" {
+     m_iResourceAllocation -1
+     m_iPriority 2
+    }
+    OVT_BaseUpgradeTowerGuard "{69DAD674895ADACA}" {
+     m_iResourceAllocation -1
+     m_iPriority 2
+    }
+    OVT_BaseUpgradeParkedVehicles "{69DAD674895AE2C7}" {
+     m_iResourceAllocation 9
+     m_iPriority 10
+     m_iNumberOfCars 0
+     m_iNumberOfTrucks 1
+    }
+    OVT_BaseUpgradeCheckpoints "{69DAD674895AE2C5}" {
+     m_iResourceAllocation -1
+     m_iPriority 3
+    }
+    OVT_BaseUpgradeComposition "{69DAD674895AE2CB}" {
+     m_iResourceAllocation -1
+     m_iPriority 4
+     m_sCompositionTag "SmallBunker"
+    }
+    OVT_BaseUpgradeComposition "{69DAD674895AE2C9}" {
+     m_iResourceAllocation -1
+     m_bDeactivate 0
+     m_sCompositionTag "AmmoCache"
+    }
+    OVT_BaseUpgradeComposition "{69DAD674895AE2CF}" {
+     m_iResourceAllocation -1
+     m_bDeactivate 0
+     m_sCompositionTag "MGNest"
+    }
+    OVT_BaseUpgradeSpecops "{69DAD674895D4752}" {
+     m_iPriority 3
+     m_bDeactivate 0
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{69DAD674895D474E}" {
+  }
+  SlotManagerComponent "{55DAE04E55ECE7FA}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Prefab "{CB81BF6576E682D3}Prefabs/Props/Fabric/Flags/Flag_1_2_USSR_01.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{69DAD674895D4749}" {
+   ActionContexts {
+    UserActionContext "{69DAD674895D4746}" {
+     ContextName "default"
+     Position PointInfo "{69DAD674895D47B8}" {
+      Offset 0 1.8 0
+     }
+     Radius 0.65
+    }
+   }
+   additionalActions {
+    OVT_SetHomeAction "{69DAD674895D47B4}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{69DAD674895D47B2}" {
+      Name "#OVT-SetHome"
+     }
+    }
+    OVT_ManageBaseAction "{69DAD674895D47B0}" {
+     ParentContextList {
+      "default"
+     }
+     "Sort Priority" 1
+    }
+    OVT_CaptureBaseAction "{69DAD674895D47AF}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{69DAD674895D47AE}" {
+      Name "#OVT-CaptureBase"
+     }
+     Duration 15
+    }
+   }
+  }
+  RplComponent "{69DAD674895D47AA}" {
+  }
+ }
+ Flags 0x403 0
+ coords 51.793 1 107.192
+}
