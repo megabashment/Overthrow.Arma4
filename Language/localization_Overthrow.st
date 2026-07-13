@@ -1100,7 +1100,7 @@ StringTable {
   }
   CustomStringTableItem "{5990833697321087}" {
    Id "OVT-FieldManual_Category_Overthrow_Title"
-   Target_en_us "Overthrow"
+   Target_en_us "Arulco Rising"
    Target_fr_fr "Overthrow"
    Target_ru_ru "Overthrow"
    Target_ko_kr "Overthrow"
@@ -1144,7 +1144,7 @@ StringTable {
   }
   CustomStringTableItem "{599083306EFCACF6}" {
    Id "OVT-FieldManual_MainMenu_Text"
-   Target_en_us "Open the main menu with <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color> to access most of the features of Overthrow."
+   Target_en_us "Open the main menu with <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color> to access most of the features of Arulco Rising."
    Target_fr_fr "Ouvrez le menu principal avec <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color> pour accéder à la plupart des fonctions d'Overthrow"
    Target_ru_ru "Откройте главное меню нажатем кнопки <color rgba='226,168,79,255'><action name=\\"OverthrowMainMenu\\"/></color>для доступа ко всем основным возможностям Overthrow."
    Target_ko_kr "Overthrow의 대부분 기능에 접근하려면 <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color>를 눌러 메인 메뉴를 여세요."
@@ -1569,13 +1569,13 @@ StringTable {
   }
   CustomStringTableItem "{59969DFBF96C7EF4}" {
    Id "OVT-IntroHint"
-   Target_en_us "Welcome to Overthrow! This is your home, you will respawn here and can fast travel here for a small fee by opening the main menu <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color>. "\
+   Target_en_us "Welcome to Arulco Rising! This is your home, you will respawn here and can fast travel here for a small fee by opening the main menu <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color>. "\
    ""\
    "You own a car parked in your garage, and a handgun is in your pants. The enemy considers you a civilian if they don't see you carrying a weapon and will not shoot you, so be careful when equipping your weapon around them. Stars will appear in the top right if you are \"wanted\" by the enemy."\
    ""\
-   "If you are new to Overthrow, there is a set of tutorials in the \"Jobs\" section in the main Overthrow menu."\
+   "If you are new to Arulco Rising, there is a set of tutorials in the \"Jobs\" section in the main Arulco menu."\
    ""\
-   "For more info on Overthrow's features and gameplay just have a look at the \"Field Manual\""
+   "For more info on Arulco Rising's features and gameplay just have a look at the \"Field Manual\""
    Target_fr_fr "Bienvenue sur Overthrow! Ceci est votre domicile, vous réapparaitrez ici et pourrez y effectuer des déplacement rapides pour pas très cher dans le menu principal <color rgba='226,168,79,255'><action name=\"OverthrowMainMenu\"/></color>. Vous possédez également une voiture dans le garage."\
    ""\
    "Pour plus d'informations sur les fonctionnalités d'Overthrow, ouvrez le \"Manuel de terrain\""
@@ -1997,7 +1997,7 @@ StringTable {
    ""\
    "You can also set a camp as \"home' so you will respawn there on your death."\
    ""\
-   "Place a camp by opening the Overthrow menu and choosing \"Place\". Put it somewhere useful so you can easily get back to an area where you are currently operating or where you parked your vehicle."
+   "Place a camp by opening the Arulco menu and choosing \"Place\". Put it somewhere useful so you can easily get back to an area where you are currently operating or where you parked your vehicle."
    Target_uk_ua "Табори можна розміщувати будь-де, де вони не будуть занадто близько до бази."\
    ""\
    "Вони створюють точку швидкого переміщення, якою може користуватися будь-який гравець, і дозволяють розміщувати/будувати базові предмети поруч."\
@@ -2023,7 +2023,7 @@ StringTable {
   }
   CustomStringTableItem "{65CD0E9BBC6527A5}" {
    Id "OVT-Job_PlaceEquipmentBox_Description"
-   Target_en_us "An Equipment Box is a very useful storage container with extra functionality in Overthrow."\
+   Target_en_us "An Equipment Box is a very useful storage container with extra functionality in Arulco Rising."\
    ""\
    "It can:"\
    "- Store all sorts of equipment"\
@@ -2032,7 +2032,7 @@ StringTable {
    "- Be loaded from a nearby vehicle"\
    "- Save your current loadout and apply it to yourself or nearby recruits"\
    ""\
-   "Use the \"Place\" option in the Overthrow menu to place one at your house, your camp, an FOB or a base."
+   "Use the \"Place\" option in the Arulco menu to place one at your house, your camp, an FOB or a base."
    Target_uk_ua "Ящик із екіпіруванням — це дуже корисний контейнер для зберігання з додатковими функціями в Overthrow."\
    ""\
    "Він може:"\
@@ -2073,7 +2073,7 @@ StringTable {
    Id "OVT-Job_RaiseSupportDescription"
    Target_en_us "Supporters in this town will bring a much needed source of income for the resistance in the form of donations."\
    ""\
-   "Raise support by placing posters in and around the town using the \"Place\" option in the Overthrow menu and waiting for them to catch the eye of 15% of the town's citizens. You can also deliver medical supplies like Bandages and Aspirin bottles by placing them in your car and using the \"Deliver Medical Supplies\" option in your trunk."\
+   "Raise support by placing posters in and around the town using the \"Place\" option in the Arulco menu and waiting for them to catch the eye of 15% of the town's citizens. You can also deliver medical supplies like Bandages and Aspirin bottles by placing them in your car and using the \"Deliver Medical Supplies\" option in your trunk."\
    ""\
    "Check your progress using the \"Map Info\" menu option. You can raise support in any village, town or city without needing a job to do it."
    Target_fr_fr "Les partisans représentent une importante source de revenus pour la résistance. Ralliez les à votre cause en collant des affiches dans et autour de la commune en utilisant l'option \"Placer\" du menu, puis attendez qu'au moins 15% y prêtent attention. Vous pouvez également leur fournir du matériel médical comme des bandages ou de l'insuline pour accélérer leur ralliement."
@@ -2253,7 +2253,7 @@ StringTable {
   }
   CustomStringTableItem "{64685092EE73FE51}" {
    Id "OVT-JobsMenuDescription"
-   Target_en_us "These jobs are designed to be a tutorial for the game mode. They are not a great source of income and just show you what is possible. Overthrow is an open-world game mode where YOU decide how to further the cause of the revolution. You will make a lot more money by raising support and taking towns. So get out there and raise support, capture bases and take over the island!"
+   Target_en_us "These jobs are designed to be a tutorial for the game mode. They are not a great source of income and just show you what is possible. Arulco Rising is an open-world game mode where YOU decide how to further the cause of the revolution. You will make a lot more money by raising support and taking towns. So get out there and raise support, capture bases and take over the island!"
    Target_ko_kr "이 임무들은 게임 모드의 튜토리얼용으로 설계되었습니다. 많은 수입을 기대하기보다는 가능한 활동들을 보여주기 위한 것입니다. Overthrow는 당신이 혁명의 대의를 위해 어떻게 행동할지 스스로 결정하는 오픈 월드 게임 모드입니다. 지지자를 모으고 마을을 점령하는 것이 훨씬 더 많은 돈을 벌 수 있는 방법입니다. 그러니 밖으로 나가서 지지를 모으고, 기지를 점령하며 섬을 장악하세요!"\
    ""
    Target_zh_cn "这些工作主要用于教学目的，帮助玩家熟悉游戏机制。这些任务的收入有限，旨在展示游戏中的可能性。抵抗是一个开放类世界游戏模式，你可以决定如何进一步抵抗革命事业。通过提高支持度和占领城镇，你将更多的资金和资源。因此，积极争取支持、占领基地并逐步控制整个岛屿吧！"
@@ -4504,7 +4504,7 @@ StringTable {
   }
   CustomStringTableItem "{599A1C5F66015FAB}" {
    Id "OVT-Overthrow"
-   Target_en_us "Overthrow"
+   Target_en_us "Arulco Rising"
    Target_fr_fr "Overthrow"
    Target_ru_ru "Overthrow"
    Target_zh_cn "抵抗"
@@ -7762,7 +7762,7 @@ StringTable {
   }
   CustomStringTableItem "{5E4852B16105E7FC}" {
    Id "OVT_Open_Overthrow_Menu"
-   Target_en_us "Open Overthrow Menu"
+   Target_en_us "Open Arulco Menu"
    Target_ko_kr "Overthrow 메뉴 열기"
    Target_zh_cn "打开抵抗菜单"
    Target_uk_ua "Відкрити Overthrow меню"
@@ -7789,4 +7789,4 @@ StringTable {
    LastChanged "CrioUA"
   }
  }
-}
+}
