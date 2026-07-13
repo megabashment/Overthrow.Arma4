@@ -166,12 +166,13 @@ class OVT_EconomyManagerComponent: OVT_Component
 			UpdateShops();
 		}
 		
-		//Every morning at 7am replenish stock
+		//Every morning at 7am replenish stock and pay recruit wages
 		if(time.m_iHours == 7)
 		{
 			if (m_iHourPaidStock != time.m_iHours) {
 				m_iHourPaidStock = time.m_iHours;
 				ReplenishStock();
+				PayRecruitWages();
 			}
 		} else {
 			m_iHourPaidStock = -1;
@@ -269,6 +270,51 @@ class OVT_EconomyManagerComponent: OVT_Component
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//! Deducts each recruit's daily wage from their owner's funds. If the owner cannot afford it,
+	//! the recruit leaves the player's service. Typically occurs once per day (e.g., at 7 AM).
+	protected void PayRecruitWages()
+	{
+		OVT_RecruitManagerComponent recruitManager = OVT_Global.GetRecruits();
+		if (!recruitManager || !recruitManager.m_mRecruits) return;
+
+		array<string> recruitIds = new array<string>;
+		for (int i = 0; i < recruitManager.m_mRecruits.Count(); i++)
+		{
+			recruitIds.Insert(recruitManager.m_mRecruits.GetKey(i));
+		}
+
+		foreach (string recruitId : recruitIds)
+		{
+			OVT_RecruitData recruit = recruitManager.m_mRecruits.Get(recruitId);
+			if (!recruit) continue;
+
+			// Locals are never paid and never dismissed for non-payment
+			if (recruit.m_eRecruitType == ARU_ERecruitType.EINHEIMISCHER) continue;
+
+			int wage = recruit.m_iDailyWage;
+			if (wage <= 0) continue;
+
+			if (PlayerHasMoney(recruit.m_sOwnerPersistentId, wage))
+			{
+				TakePlayerMoneyPersistentId(recruit.m_sOwnerPersistentId, wage);
+				Print("[Overthrow] Paid daily wage of " + wage + " to recruit " + recruit.m_sName + " (" + recruitId + ")");
+			}
+			else
+			{
+				Print("[Overthrow] Recruit " + recruit.m_sName + " (" + recruitId + ") could not be paid, leaving service");
+
+				OVT_PlayerData ownerData = OVT_Global.GetPlayers().GetPlayer(recruit.m_sOwnerPersistentId);
+				if (ownerData && !ownerData.IsOffline())
+				{
+					OVT_Global.GetNotify().SendTextNotification("RecruitLeftUnpaid", ownerData.id, recruit.m_sName);
+				}
+
+				recruitManager.DismissRecruitForNonPayment(recruitId);
+			}
+		}
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Replenishes stock in shops and gun dealers based on configured minimums and maximums.
 	//! Typically occurs once per day (e.g., at 7 AM).

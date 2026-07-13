@@ -334,7 +334,12 @@ class OVT_RecruitManagerComponent : OVT_Component
 		
 		// Mark as online since entity exists
 		recruit.m_bIsOnline = true;
-		
+
+		// AddRecruit is currently only reached via RecruitCivilian (locally recruited).
+		// Locals draw no wage and are never dismissed for non-payment (see PayRecruitWages).
+		recruit.m_eRecruitType = ARU_ERecruitType.EINHEIMISCHER;
+		recruit.m_iDailyWage = 0;
+
 		// Add to collections
 		m_mRecruits[recruitId] = recruit;
 		
@@ -398,7 +403,32 @@ class OVT_RecruitManagerComponent : OVT_Component
 		
 		m_OnRecruitRemoved.Invoke(recruit);
 	}
-	
+
+	//------------------------------------------------------------------------------------------------
+	//! Server-side: remove a recruit's entity and data because the owner could not pay the daily wage
+	void DismissRecruitForNonPayment(string recruitId)
+	{
+		IEntity recruitEntity = FindRecruitEntity(recruitId);
+		if (recruitEntity)
+		{
+			// Remove from group first
+			AIControlComponent aiControl = AIControlComponent.Cast(recruitEntity.FindComponent(AIControlComponent));
+			if (aiControl)
+			{
+				AIAgent agent = aiControl.GetAIAgent();
+				if (agent && agent.GetParentGroup())
+				{
+					agent.GetParentGroup().RemoveAgent(agent);
+				}
+			}
+
+			// Delete entity on server
+			SCR_EntityHelper.DeleteEntityAndChildren(recruitEntity);
+		}
+
+		RemoveRecruit(recruitId);
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Add experience to a recruit
 	void AddRecruitXP(string recruitId, int xp)

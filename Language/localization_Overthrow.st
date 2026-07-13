@@ -3817,6 +3817,13 @@ StringTable {
    Author "Aaron Static"
    LastChanged "CrioUA"
   }
+  CustomStringTableItem "{6246810BC7A90EDD}" {
+   Id "OVT-Msg-RecruitLeftUnpaid"
+   Target_en_us "%1 has left your service - unpaid wages"
+   Modified 1783900000
+   Author "Christian"
+   LastChanged "Christian"
+  }
   CustomStringTableItem "{5D86A3C7B5BAFA27}" {
    Id "OVT-Msg-TaxesDonationsPlayer"
    Target_en_us "You have received $%1 in donations and taxes"

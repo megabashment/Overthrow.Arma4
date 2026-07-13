@@ -1,3 +1,10 @@
+//! Distinguishes locally recruited civilians (never dismissed for non-payment) from paid mercenaries
+enum ARU_ERecruitType
+{
+	EINHEIMISCHER, // Recruited from the local population (e.g. RecruitCivilian) - stays regardless of pay
+	SOELDNER       // Hired mercenary - leaves service if daily wage cannot be paid
+}
+
 //! Data structure for storing AI recruit information
 class OVT_RecruitData : Managed
 {
@@ -36,6 +43,12 @@ class OVT_RecruitData : Managed
 	
 	//! ID of the town where this recruit was hired from
 	int m_iTownId = -1;
+
+	//! Daily wage deducted from the owner's funds (set from difficulty config at hire time). 0 for locals.
+	int m_iDailyWage = 50;
+
+	//! Whether this recruit is a local (never dismissed for non-payment) or a paid mercenary
+	ARU_ERecruitType m_eRecruitType = ARU_ERecruitType.EINHEIMISCHER;
 	
 	//------------------------------------------------------------------------------------------------
 	//! Calculate level from XP (same formula as player)

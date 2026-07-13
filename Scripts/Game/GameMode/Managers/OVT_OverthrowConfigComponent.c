@@ -542,8 +542,9 @@ class OVT_OverthrowConfigComponent: OVT_Component
 		writer.WriteFloat(m_Difficulty.gunDealerSellPriceMultiplier);		
 		writer.WriteFloat(m_Difficulty.procurementMultiplier);	
 		writer.WriteFloat(m_Difficulty.vehiclePriceMultiplier);
-		
-		//Send server config options	
+		writer.WriteInt(m_Difficulty.baseRecruitWage);
+
+		//Send server config options
 		writer.WriteBool(m_ConfigFile.mobileFOBOfficersOnly);	
 		writer.WriteInt(m_ConfigFile.houseItemLimit);
 		writer.WriteInt(m_ConfigFile.campItemLimit);
@@ -592,7 +593,10 @@ class OVT_OverthrowConfigComponent: OVT_Component
 		
 		if (!reader.ReadFloat(f)) return false;
 		m_Difficulty.vehiclePriceMultiplier = f;
-		
+
+		if (!reader.ReadInt(i)) return false;
+		m_Difficulty.baseRecruitWage = i;
+
 		//Receive server config options
 		if (!reader.ReadBool(b)) return false;
 		

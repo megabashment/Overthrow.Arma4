@@ -69,6 +69,8 @@ class OVT_DifficultySettings : ScriptAndConfig
 	int busTicketPrice;
 	[Attribute(defvalue: "250", desc: "Base price for AI recruit", category: "Economy")]
 	int baseRecruitCost;
+	[Attribute(defvalue: "50", desc: "Daily wage per AI recruit", category: "Economy")]
+	int baseRecruitWage;
 	[Attribute(defvalue: "0.5", desc: "Multiplier when selling to a gun dealer", category: "Economy")]
 	float gunDealerSellPriceMultiplier;
 	[Attribute(defvalue: "0.8", desc: "Multiplier when buying vehicles at an owned base", category: "Economy")]
